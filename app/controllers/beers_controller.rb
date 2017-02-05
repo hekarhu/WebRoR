@@ -36,8 +36,10 @@ class BeersController < ApplicationController
         format.json { render :show, status: :created, location: @beer }
 
       else
+        @breweries = Brewery.all
+        @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter"]
         format.html { render :new }
-        format.json { render json: @beer.errors, status: :unprocessable_entity }
+                format.json { render json: @beer.errors, status: :unprocessable_entity }
       end
     end
 	
