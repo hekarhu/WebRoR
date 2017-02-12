@@ -1,1 +1,1 @@
-json.extract! @brewery, :id, :name, :year, :created_at, :updated_at
+json.partial! "breweries/brewery", brewery: @brewery
