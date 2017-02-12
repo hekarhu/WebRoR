@@ -5,7 +5,8 @@ describe "Beer" do
       year = 1896
       @breweries.each do |brewery_name|
         FactoryGirl.create(:brewery, name: brewery_name, year: year)
-
+	FactoryGirl.create(:user)
+        sign_in(username:"Pekka", password:"Foobar1")
       visit new_beer_path
       end
 end
@@ -27,7 +28,7 @@ it "is not created when name is not filled" do
         expect{
       click_button('Create Beer')
     }.to change{Beer.count}.by(0)
-    save_and_open_page
+    #save_and_open_page
     expect(page).to have_content 'Name can\'t be blank'
 end
 
