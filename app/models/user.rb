@@ -13,5 +13,9 @@ class User < ActiveRecord::Base
                        length: { minimum: 3, maximum: 30 }
   validates :password, length: { minimum: 4 }   
   validates :password, format: { with: /([A-Z].*\d)|(\d.*[A-Z].*)/,
-              message: "should contain one number and one capital letter" }                    
+              message: "should contain one number and one capital letter" }     
+  def favorite_beer
+    return nil if ratings.empty?
+    ratings.sort_by{ |r| r.score }.last.beer
+  end
 end
