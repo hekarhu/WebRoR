@@ -16,6 +16,10 @@
 <% end %>
 
 <% if @user.ratings.any? %>
+  <p> Favorite beer: <%= @user.favorite_beer.name %> </p>
+  <p> Favorite brewery: <%= @user.favorite_brewery.name %> </p>
+  <p> Favorite style: <%= @user.favorite_style %> </p>
+
   <p> average rating <%= @user.average_rating %></p>
 
   <h3>ratings</h3>
@@ -25,7 +29,7 @@
     <li>
       <%= r %>
       <% if @user == current_user %>
-        <%= link_to 'delete', r, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'delete', r, class:'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %>
       <% end %>
     </li>
   <% end %>
@@ -35,6 +39,6 @@
 
 
 <% if @user==current_user%>
-  <%= link_to 'change password', edit_user_path(@user) %> <br>
-  <%= link_to 'destroy', @user, method: :delete, data: { confirm: 'Are you sure?' }  %> 
+  <%= link_to 'change password', edit_user_path(@user), class:'btn btn-brimary' %> <br>
+  <%= link_to 'destroy', @user, class:'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }  %> 
 <% end %>

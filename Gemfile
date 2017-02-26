@@ -7,6 +7,11 @@ gem 'rails', '4.2.5'
 group :development, :test do
   gem 'sqlite3'
 end
+#kenkäansa
+gem 'bootstrap-sass'
+group :development do
+  gem 'rails_layout'
+end
 
 group :production do
    gem 'pg'
